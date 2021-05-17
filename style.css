@@ -1,0 +1,22 @@
+.list {
+  list-style: none;
+}
+
+.list__item {
+  color: white;
+  background-color: blue;
+  width: 20px;
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  border: solid 1px blue;
+  border-radius: 50%;
+}
+
+.active {
+  background-color: red;
+}
+
+.hidden {
+  display: none;
+}
