@@ -1,27 +1,15 @@
-let x = document.querySelectorAll('.list');
+const expandList = function (event) {
+  const target = event.target;
 
-let zHolder = function (evt) {
-  let t = evt.target;
-  let li = t.parentNode.querySelectorAll('.list__item');
-
-  li.forEach((el) => {
-    el.classList.remove('hidden', 'active');
-  });
-  t.removeEventListener('click', zHolder);
+  target.parentElement.classList.add('expanded');
+  target.classList.remove('expand');
+  target.removeEventListener('click', expandList);
 };
 
-for (let i = 0; i < x.length; i++) {
-  if (x[i].children.length > 3) {
-    let y = x[i].querySelectorAll('.list__item');
-
-    for (let i = 0; i < y.length; i++) {
-      if (i > 2) {
-        y[2].classList.add('active');
-        y[i].classList.add('hidden');
-      }
-    }
-
-    let z = x[i].querySelector('.active');
-    z.addEventListener('click', zHolder);
+document.querySelectorAll('.list').forEach((list) => {
+  if (list.children.length > 3) {
+    const expander = list.querySelector('.list__item:nth-child(3)');
+    expander.classList.add('expand');
+    expander.addEventListener('click', expandList);
   }
-}
+});
